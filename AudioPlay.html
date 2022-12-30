@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Audio Recorder and Player</title>
+</head>
+<body>
+  <!-- 添加 audio 标签，并指定音频文件的路径 -->
+  <audio id="audio" controls src="./output.wav"></audio>
+  <!-- 添加记录按钮 -->
+  <button id="record-button">Record</button>
+  <!-- 添加播放按钮 -->
+  <button id="play-button">Play</button>
+  <!-- 引入 JavaScript 文件 -->
+  <script>
+      // 获取 audio 元素、记录按钮和播放按钮
+      const audio = document.getElementById('audio');
+      const recordButton = document.getElementById('record-button');
+      const playButton = document.getElementById('play-button');
+
+      // 为记录按钮添加单击事件处理器
+      recordButton.addEventListener('click', function () {
+          // 调用 record.py 程序
+          fetch('record.py')
+              .then(function (response) {
+                  console.log('Recorded audio');
+              });
+      });
+
+      // 为播放按钮添加单击事件处理器
+      playButton.addEventListener('click', function () {
+          // 播放音频
+          audio.play();
+      });
+
+  </script>
+</body>
+</html>
